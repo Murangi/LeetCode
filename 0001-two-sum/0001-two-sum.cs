@@ -1,24 +1,22 @@
 public class Solution {
     public int[] TwoSum(int[] nums, int target) {
-        
-        int[] TargetSum = new int[2]; 
-        for(int i = 0; i < nums.Length -1;i++)
-        {
-            for(int j = i+1; j < nums.Length;j++)
-            {
-                if((nums[i] + nums[j]) == target)
-                {
-                    TargetSum[0] = i;
-                    TargetSum[1] = j;
+        // Dictionary to store the number as the key and its index as the value
+        Dictionary<int, int> MyDictionary = new Dictionary<int, int>();
 
-                    return TargetSum;
-                }
+        for (int i = 0; i < nums.Length; i++) {
+            int Difference = target - nums[i];
+
+            // Check if the difference exists as a key in the dictionary
+            if (MyDictionary.ContainsKey(Difference)) {
+                // If found, return the indices of the two numbers
+                return new int[] { MyDictionary[Difference], i };
             }
+
+            // If not found, add the current number and its index to the dictionary
+            MyDictionary[nums[i]] = i;
         }
 
-        return TargetSum;
+        // Return an empty array or throw an exception if no solution exists
+        throw new ArgumentException("No two sum solution found.");
     }
 }
-
-
-
