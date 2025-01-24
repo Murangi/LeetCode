@@ -3,7 +3,6 @@ public class Solution {
         
         int iLength = s.Length;
         char[] MySubstring = s.ToCharArray();
-        //char[] Window = new char[iLength];
         List<char> Window = new List<char>();
         HashSet<char> NoDuplicates = new HashSet<char>();
 
@@ -21,12 +20,6 @@ public class Solution {
         {
             for(int i = 0; i < iLength; i++)
             {
-            //    if(!Window.Contains(MySubstring[i]))
-            //    {
-            //      //Window[LongestSubstring] = MySubstring[i];
-            //      Window.Add(MySubstring[i]);
-            //      LongestSubstring++;
-            //    }
                 
                 NoDuplicates = Window.ToHashSet();
                 
