@@ -12,21 +12,22 @@
 public class Solution {
     public bool HasCycle(ListNode head) {
 
-        ListNode SlowNode = head, FastNode = head.next;
-
-        if(head == null) {
-            return false;
+        if (head == null || head.next == null) { 
+            return false; // If the list is empty or has only one node, it can't have a cycle
         }
 
-        while(SlowNode != null && SlowNode.next != null) {
+        ListNode SlowNode = head, FastNode = head;
+
+        while (FastNode != null && FastNode.next != null) { 
             SlowNode = SlowNode.next;
             FastNode = FastNode.next.next;
 
-            if(SlowNode == FastNode) {
+            if (SlowNode == FastNode) { // If both pointers meet, there is a cycle
                 return true;
             }
         }
 
-        return false;
+        return false; // If we exit the loop, there is no cycle
+
     }
 }
